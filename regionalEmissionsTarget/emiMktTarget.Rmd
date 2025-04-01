@@ -25,9 +25,22 @@ date: "How to define region-specific emission targets, either as year-based targ
   h1,h2,h3,h4,h5,h6{
     font-size: 1.5em;
   } 
+  
+  @media print {  
+    html,body {
+        margin:0 auto;
+        transform: scale(.90);
+        transform-origin: 0 0;
+    }
+  @page {
+    size: 297mm 210mm; /* landscape */
+    /* you can also specify margins here: */
+    /* margin: 25mm; */
+    /* margin-right: 45mm;  for compatibility with both A4 and Letter */
+  }
+}
 
 </style>
-
 
 <div class = "row">
 
