@@ -15,7 +15,9 @@ Each cheat sheet provides concise and practical information about specific REMIN
     <img src="regionalEmissionsTarget/regionalEmissionsTarget.png" alt="Regional Emissions Target Cheat Sheet" width="400" style="float: right; margin-left: 10px;">  
   </a>
   
-  👉 [View the cheat sheet](https://renato-rodrigues.github.io/remind-cheat-sheets/regionalEmissionsTarget/regionalEmissionsTarget)  
+  👉 [View the cheat sheet](https://renato-rodrigues.github.io/remind-cheat-sheets/regionalEmissionsTarget/regionalEmissionsTarget)
+  
+  👉 [📄 Download the PDF](https://github.com/Renato-Rodrigues/remind-cheat-sheets/blob/main/regionalEmissionsTarget/regionalEmissionsTarget.pdf)
 
 More cheat sheets will be added soon—stay tuned!  
 
