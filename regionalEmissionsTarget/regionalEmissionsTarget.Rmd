@@ -4,7 +4,6 @@ output: html_document
 date: "How to define region-specific emission targets, either as year-based targets or emission budgets:"
 ---
 
-
 <style type="text/css">
 
    .main-container {max-width: 90%;}
@@ -14,19 +13,34 @@ date: "How to define region-specific emission targets, either as year-based targ
    .column60 {width: 60%}
    .column40 {width: 40%}
    .column33 {width: 33%}
-   .divisor {width: 2.5%}
+   .gap  {width: 2.5%}
    
    body{
-  font-family: Helvetica;
-  font-size: 1.2em;
+    font-family: Helvetica;
+    font-size: 1.2em;
+    min-width: 1920px;
+  }
+  /* Headers */
+  h1,h2,h3,h4,h5,h6{
+    font-size: 1.5em;
+  } 
+  
+  @media print {  
+    html,body {
+        margin:0 auto;
+        transform: scale(.90);
+        transform-origin: 0 0;
+    }
+  @page {
+    /*size: 297mm 210mm;  landscape */
+    size: landscape;
+    /* you can also specify margins here: */
+    /* margin: 25mm; */
+    /* margin-right: 45mm;  for compatibility with both A4 and Letter */
+  }
 }
-/* Headers */
-h1,h2,h3,h4,h5,h6{
-  font-size: 1.5em;
-} 
 
 </style>
-
 
 <div class = "row">
 
@@ -62,7 +76,7 @@ h1,h2,h3,h4,h5,h6{
 
 </div>
 
-<div class = "divisor">
+<div class = "gap">
 
 </div>
 
@@ -259,11 +273,10 @@ plot <- ggplot(data,aes(x=period,y=value)) +
                    nudge_y = c(75,75,-75,-75,-750,-750,750)
                    ) +
   facet_wrap( vars(type) , ncol = 1, scales= "free_y") +
-  scale_x_date(date_labels = "%Y") +
+  scale_x_date(date_labels = "%Y", breaks=as.Date(paste0("01/01/", c(2010,2020,2030,2040,2050,2060)),format="%m/%d/%Y")) +
   theme_minimal() +
   theme(axis.title.y = element_blank(),
         axis.title.x=element_blank())
-
 
 ```
 
@@ -284,20 +297,19 @@ plot
 
 ### Examples  
 
-| **Example**                            | **cm_emiMktTarget**                                                    | **Description**                                                                                       |
-|----------------------------------------|------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Single Regional Target                 | `2020.2050.EU27.all.year.netGHG_LULUCFGrassi 0.0001`                      | EU27 economy-wide (`all`) 2050 net-neutrality (`2050`, `year`) of GHG with bunkers emissions and LULUCF Grassi shift (`netGHG_LULUCFGrassi`)       |
-| Multi-period Target                    | `2020.2030.EU27_regi.all.year.netGHG_LULUCFGrassi_intraRegBunker 2.191` , `2020.2050.EU27.all.year.netGHG 0.0001`| EU27 economy-wide (`all`) GHG emission target including only intra-region bunkers (`netGHG_LULUCFGrassi_intraRegBunker`) for 2030, and including full bunkers (`netGHG`) for 2050                          |
-| Multi-period, Multi-regional Target    | `2020.2030.EU27_regi.all.year.netGHG_LULUCFGrassi_intraRegBunker 2.191`, `2020.2030.DEU.all.year.netGHG_noLULUCF_noBunkers 0.42`, `(2035.2050.EU27_regi, 2035.2045.DEU, 2020.2050.UKI).all.year.netGHG_LULUCFGrassi 0.0001` | 2030, 2045 and 2050 emission targets for Germany, EU27, and UK regions                    |
+| **Example**                                       | **cm_emiMktTarget**                                   | **Description**                                                                                       |
+|---------------------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| Single Regional Target                            | `2020.2050.EU27.all.year.netGHG_LULUCFGrassi 0.0001`  | EU27 economy-wide (`all`) 2050 net-neutrality (`2050`, `year`) of GHG with bunkers emissions and LULUCF Grassi shift (`netGHG_LULUCFGrassi`)       |
+| Multi-period Target                               | `2020.2030.EU27_regi.all.year.netGHG_LULUCFGrassi_intraRegBunker 2.191` , `2020.2050.EU27.all.year.netGHG 0.0001`| EU27 economy-wide (`all`) GHG emission target including only intra-region bunkers (`netGHG_LULUCFGrassi_intraRegBunker`) for 2030, and including full bunkers (`netGHG`) for 2050                          |
+| Multi-period, Multi-regional Target               | `2020.2030.EU27_regi.all.year.netGHG_LULUCFGrassi_intraRegBunker 2.191`, `2020.2030.DEU.all.year.netGHG_noLULUCF_noBunkers 0.42`, `(2035.2050.EU27_regi, 2035.2045.DEU, 2020.2050.UKI).all.year.netGHG_LULUCFGrassi 0.0001` | 2030, 2045, and 2050 emission targets for different regions: Germany (`DEU`), `EU27`, and UK (`UKI`).                    |
+| Enforcing Long-Term Targets (India Net-Zero Post-2070) | `2020.2070.IND.all.year.netCO2 0.001`, `2070.2090.IND.all.year.netCO2 0.001` | Ensures that India's net-zero target remains beyond 2070, preventing emissions from rebounding.  |
 ||||
 
-
-
 </div>
 
 </div>
 
-<div class = "divisor">
+<div class = "gap">
 </div>
 
 <div class = "column33">
