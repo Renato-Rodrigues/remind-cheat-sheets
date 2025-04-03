@@ -347,5 +347,8 @@ plot
 
 ---
 
+### Tips
+- To set a "zero target," avoid using exactly 0, as GAMS may disregard it. Instead, use a very small value, such as 0.001, to ensure it is recognized.
+
 </div>
 </div>
